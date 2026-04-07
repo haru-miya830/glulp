@@ -3,18 +3,22 @@ import { dashboardStats } from "@/lib/dummy-data";
 import StatsCard from "@/components/dashboard/StatsCard";
 import RecentPosts from "@/components/dashboard/RecentPosts";
 import QuickActions from "@/components/dashboard/QuickActions";
+import Banner from "@/components/dashboard/Banner";
 
 export default function DashboardPage() {
   return (
-    <div className="mx-auto max-w-6xl space-y-6">
+    <div className="mx-auto max-w-7xl space-y-8">
       {/* Header */}
       <div>
-        <h1 className="text-2xl font-bold text-white">ダッシュボード</h1>
-        <p className="mt-1 text-sm text-gray-500">投稿パフォーマンスの概要</p>
+        <h1 className="text-3xl font-extrabold text-white tracking-tight">ダッシュボード</h1>
+        <p className="mt-1.5 text-sm text-gray-500">投稿パフォーマンスの概要</p>
       </div>
 
+      {/* Banner */}
+      <Banner />
+
       {/* Stats Grid */}
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
         <StatsCard
           title="総投稿数"
           value={dashboardStats.totalPosts}
@@ -46,11 +50,11 @@ export default function DashboardPage() {
       </div>
 
       {/* Main Content Grid */}
-      <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
-        <div className="lg:col-span-2">
+      <div className="grid grid-cols-1 gap-8 lg:grid-cols-5">
+        <div className="lg:col-span-3">
           <RecentPosts />
         </div>
-        <div>
+        <div className="lg:col-span-2">
           <QuickActions />
         </div>
       </div>

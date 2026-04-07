@@ -32,15 +32,15 @@ export default function Sidebar() {
       {/* Mobile toggle */}
       <button
         onClick={() => setOpen(!open)}
-        className="fixed top-4 left-4 z-50 rounded-lg bg-white/10 p-2 backdrop-blur-md md:hidden"
+        className="fixed top-5 left-5 z-50 rounded-2xl border border-violet-500/20 bg-[#0c0c1d]/90 p-2.5 backdrop-blur-xl md:hidden shadow-[0_0_15px_rgba(139,92,246,0.15)]"
       >
-        {open ? <X size={20} /> : <Menu size={20} />}
+        {open ? <X size={20} className="text-violet-300" /> : <Menu size={20} className="text-violet-300" />}
       </button>
 
       {/* Overlay */}
       {open && (
         <div
-          className="fixed inset-0 z-30 bg-black/50 md:hidden"
+          className="fixed inset-0 z-30 bg-black/60 backdrop-blur-sm md:hidden"
           onClick={() => setOpen(false)}
         />
       )}
@@ -48,25 +48,31 @@ export default function Sidebar() {
       {/* Sidebar */}
       <aside
         className={`
-          fixed left-0 top-0 z-40 h-full w-64
-          border-r border-white/10 bg-[#0a0a1a]/90 backdrop-blur-xl
+          fixed left-0 top-0 z-40 h-full w-72
+          border-r border-violet-500/15
+          bg-[#06061a]/95 backdrop-blur-2xl
+          shadow-[1px_0_30px_rgba(139,92,246,0.08)]
           transition-transform duration-300 ease-in-out
           ${open ? "translate-x-0" : "-translate-x-full"}
           md:translate-x-0
         `}
       >
         {/* Logo */}
-        <div className="flex h-16 items-center gap-2 px-6">
-          <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-violet-500 to-blue-500 flex items-center justify-center text-sm font-bold">
+        <div className="flex h-20 items-center gap-3 px-7 border-b border-white/[0.06]">
+          <div className="relative h-10 w-10 rounded-xl bg-gradient-to-br from-violet-500 to-blue-500 flex items-center justify-center text-base font-black shadow-[0_0_20px_rgba(139,92,246,0.4)]">
             G
+            <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-violet-500 to-blue-500 blur-md opacity-40 -z-10" />
           </div>
-          <span className="text-lg font-bold bg-gradient-to-r from-violet-400 to-blue-400 bg-clip-text text-transparent">
-            Glulp
-          </span>
+          <div>
+            <span className="text-xl font-extrabold bg-gradient-to-r from-violet-300 via-blue-300 to-cyan-300 bg-clip-text text-transparent">
+              Glulp
+            </span>
+            <p className="text-[10px] tracking-widest text-gray-600 uppercase">AI Post Manager</p>
+          </div>
         </div>
 
         {/* Nav */}
-        <nav className="mt-4 px-3 space-y-1">
+        <nav className="mt-6 px-4 space-y-1.5">
           {navItems.map((item) => {
             const isActive = pathname === item.href;
             return (
@@ -75,16 +81,19 @@ export default function Sidebar() {
                 href={item.href}
                 onClick={() => setOpen(false)}
                 className={`
-                  flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium
+                  relative flex items-center gap-3.5 rounded-2xl px-4 py-3.5 text-sm font-medium
                   transition-all duration-200
                   ${
                     isActive
-                      ? "bg-gradient-to-r from-violet-500/20 to-blue-500/20 text-violet-300 shadow-[0_0_12px_rgba(139,92,246,0.15)]"
-                      : "text-gray-400 hover:bg-white/5 hover:text-gray-200"
+                      ? "bg-gradient-to-r from-violet-500/15 to-blue-500/10 text-violet-200 border border-violet-500/25 shadow-[0_0_20px_rgba(139,92,246,0.12)]"
+                      : "text-gray-500 hover:bg-white/[0.03] hover:text-gray-300 border border-transparent"
                   }
                 `}
               >
-                <item.icon size={18} />
+                {isActive && (
+                  <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[3px] h-6 rounded-r-full bg-gradient-to-b from-violet-400 to-blue-400 shadow-[0_0_8px_rgba(139,92,246,0.6)]" />
+                )}
+                <item.icon size={18} className={isActive ? "text-violet-400" : ""} />
                 {item.label}
               </Link>
             );
@@ -92,12 +101,13 @@ export default function Sidebar() {
         </nav>
 
         {/* Footer */}
-        <div className="absolute bottom-6 left-0 right-0 px-6">
-          <div className="rounded-xl border border-white/10 bg-white/5 p-4">
-            <p className="text-xs text-gray-500">Powered by</p>
-            <p className="text-sm font-medium bg-gradient-to-r from-violet-400 to-blue-400 bg-clip-text text-transparent">
+        <div className="absolute bottom-8 left-0 right-0 px-5">
+          <div className="rounded-2xl border border-violet-500/15 bg-gradient-to-br from-violet-500/[0.06] to-blue-500/[0.04] p-5">
+            <p className="text-[10px] tracking-wider text-gray-600 uppercase">Powered by</p>
+            <p className="mt-1 text-sm font-semibold bg-gradient-to-r from-violet-300 to-blue-300 bg-clip-text text-transparent">
               Claude AI
             </p>
+            <div className="mt-2 h-1 w-12 rounded-full bg-gradient-to-r from-violet-500/40 to-blue-500/40" />
           </div>
         </div>
       </aside>

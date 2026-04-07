@@ -19,7 +19,7 @@ export default function RootLayout({
     >
       <body className="min-h-full">
         <Sidebar />
-        <main className="md:ml-64 min-h-screen p-6 pt-20 md:pt-6">
+        <main className="md:ml-72 min-h-screen p-6 pt-20 md:p-10">
           {children}
         </main>
       </body>
