@@ -1,14 +1,22 @@
+import { StickyNote } from "lucide-react";
+import PageHeader from "@/components/layout/PageHeader";
 import GlassCard from "@/components/ui/GlassCard";
+import EmptyState from "@/components/ui/EmptyState";
 
 export default function NotesPage() {
   return (
-    <div className="mx-auto max-w-4xl space-y-6">
-      <div>
-        <h1 className="text-2xl font-bold text-white">学習メモ</h1>
-        <p className="mt-1 text-sm text-gray-500">AI学習のためのメモ管理</p>
-      </div>
-      <GlassCard className="p-8 text-center text-gray-500">
-        Phase 4 で実装予定
+    <div className="mx-auto max-w-4xl space-y-8">
+      <PageHeader
+        icon={StickyNote}
+        title="学習メモ"
+        description="AI学習のためのメモ管理"
+      />
+      <GlassCard>
+        <EmptyState
+          icon={StickyNote}
+          title="準備中"
+          description="学習メモ機能は次のフェーズで実装されます"
+        />
       </GlassCard>
     </div>
   );

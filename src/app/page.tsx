@@ -1,5 +1,12 @@
-import { FileText, CalendarClock, Eye, TrendingUp } from "lucide-react";
-import { dashboardStats } from "@/lib/dummy-data";
+import {
+  LayoutDashboard,
+  FileText,
+  CalendarClock,
+  Eye,
+  TrendingUp,
+} from "lucide-react";
+import { dashboardStats, recentPosts } from "@/lib/dummy-data";
+import PageHeader from "@/components/layout/PageHeader";
 import StatsCard from "@/components/dashboard/StatsCard";
 import RecentPosts from "@/components/dashboard/RecentPosts";
 import QuickActions from "@/components/dashboard/QuickActions";
@@ -8,16 +15,15 @@ import Banner from "@/components/dashboard/Banner";
 export default function DashboardPage() {
   return (
     <div className="mx-auto max-w-7xl space-y-8">
-      {/* Header */}
-      <div>
-        <h1 className="text-3xl font-extrabold text-white tracking-tight">ダッシュボード</h1>
-        <p className="mt-1.5 text-sm text-gray-500">投稿パフォーマンスの概要</p>
-      </div>
+      <PageHeader
+        icon={LayoutDashboard}
+        title="ダッシュボード"
+        description="投稿パフォーマンスの概要"
+      />
 
-      {/* Banner */}
       <Banner />
 
-      {/* Stats Grid */}
+      {/* Stats */}
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
         <StatsCard
           title="総投稿数"
@@ -49,10 +55,10 @@ export default function DashboardPage() {
         />
       </div>
 
-      {/* Main Content Grid */}
+      {/* Content */}
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-5">
         <div className="lg:col-span-3">
-          <RecentPosts />
+          <RecentPosts posts={recentPosts} />
         </div>
         <div className="lg:col-span-2">
           <QuickActions />
