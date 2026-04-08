@@ -9,6 +9,7 @@ import {
   History,
   UserCog,
   StickyNote,
+  ClipboardList,
   Menu,
   X,
 } from "lucide-react";
@@ -21,6 +22,7 @@ const navItems = [
   { href: "/history", label: "投稿履歴", icon: History },
   { href: "/character", label: "キャラ設定", icon: UserCog },
   { href: "/notes", label: "学習メモ", icon: StickyNote },
+  { href: "/product-planning", label: "商品企画", icon: ClipboardList },
 ];
 
 export default function Sidebar() {

@@ -44,3 +44,33 @@ export interface DashboardStats {
   totalImpressions: number;
   avgEngagement: number;
 }
+
+// 商品企画マーケティングフレームワーク
+export interface PlanningTask {
+  id: string;
+  title: string;
+  details?: string[];
+  estimatedHours?: string;
+  note?: string;
+}
+
+export interface PlanningPhase {
+  id: string;
+  number: string;
+  title: string;
+  description: string;
+  estimatedDuration?: string;
+  color: "violet" | "blue" | "cyan" | "emerald";
+  tasks: PlanningTask[];
+  approvalRequired?: string;
+}
+
+export interface ProductPlanningProject {
+  id: string;
+  name: string;
+  createdAt: string;
+  phases: {
+    phaseId: string;
+    completedTaskIds: string[];
+  }[];
+}
